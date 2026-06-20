@@ -5,8 +5,9 @@
 }
 html, body, #root {
   height: 100%;
+  background: #000;  /* ← prevents white page on initial load */
+  color: white;
 }
-
 /* Makes the whole app a flex column */
 #root {
   display: flex;
@@ -267,4 +268,47 @@ html, body, #root {
   color: #aaa;
   font-size: 13px;
   flex-shrink: 0;       /* never shrinks, always stays at bottom */
+}
+/* ─── LOADER ─── */
+.loader-section {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at top, #1c1c1c, #000); /* matches home */
+  flex-direction: column;
+  gap: 20px;
+}
+
+.loader {
+  --r1: 154%;
+  --r2: 68.5%;
+  width: 60px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+      var(--r1) var(--r2) at top,
+      #0000 79.5%,
+      #e50914 80%        /* changed to your red */
+    ),
+    radial-gradient(var(--r1) var(--r2) at bottom, #e50914 79.5%, #0000 80%),
+    radial-gradient(var(--r1) var(--r2) at top, #0000 79.5%, #e50914 80%),
+    #1a1a1a;             /* dark base instead of #ccc */
+  background-size: 50.5% 220%;
+  background-position: -100% 0%, 0% 0%, 100% 0%;
+  background-repeat: no-repeat;
+  animation: l9 2s infinite linear;
+}
+
+.loader-text {
+  color: #aaa;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+@keyframes l9 {
+  0%   { background-position: -100% 0%,   0% 0%,   100% 0%;   }
+  33%  { background-position:    0% 33%, 100% 33%, 200% 33%;   }
+  66%  { background-position: -100% 66%,  0% 66%,  100% 66%;  }
+  100% { background-position: -100% 100%, 0% 100%, 100% 100%; }
 }
