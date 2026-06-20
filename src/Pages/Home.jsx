@@ -15,9 +15,9 @@ export const Home = () => {
             Explore Movies
           </NavLink>
 
-          <a href="/trending" className="btn trending">
+          <NavLink to="/trending" className="btn trending">
             Trending
-          </a>
+          </NavLink>
         </div>
       </div>
     </div>
