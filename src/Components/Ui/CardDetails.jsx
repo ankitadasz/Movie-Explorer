@@ -1,24 +1,28 @@
 import { NavLink, useLoaderData } from "react-router-dom";
+import "./Card.css";
 
 export const CardDetails = () => {
-  const data = useLoaderData();
+  const movie = useLoaderData();
 
   return (
-    <div>
-      {data.results.map((movie) => (
-        <div key={movie.id}>
-          <img
-            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            alt={movie.title}
-          />
-          <h1>{movie.title}</h1>
-          <h2>{movie.release_date}</h2>
-          <h3>{movie.popularity}</h3>
-          <h4>{movie.vote_average}</h4>
-          <p>{movie.overview}</p>
-        </div>
-      ))}
-      <NavLink to="/explore">Go Back</NavLink>
+    <div className="details-container">
+      <div className="details-card">
+        <img
+          className="details-poster"
+          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+          alt={movie.title}
+        />
+
+        <h1 className="details-title">{movie.title}</h1>
+        <h2 className="details-text">Release: {movie.release_date}</h2>
+        <h3 className="details-text">Popularity: {movie.popularity}</h3>
+        <h4 className="details-text">Rating: {movie.vote_average}</h4>
+        <p className="details-overview">{movie.overview}</p>
+
+        <NavLink to="/explore" className="back-btn">
+          Go Back
+        </NavLink>
+      </div>
     </div>
   );
 };

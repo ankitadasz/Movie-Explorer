@@ -7,7 +7,8 @@ import { Trending } from "./Pages/Trending";
 import { Explore } from "./Pages/Explore";
 import "./App.css";
 import { GetApiData } from "./Api/GetApiData";
-console.log(createBrowserRouter);
+import { CardDetails } from "./Components/Ui/CardDetails";
+import { GetMovieDetails } from "./Api/GetMovieDetails";
 
 const App = () => {
   console.log("APP RENDERED");
@@ -23,9 +24,17 @@ const App = () => {
         },
 
         {
-          path: "/explore",
+          path: "/explore/",
           element: <Explore />,
-          loader:GetApiData,
+          loader: GetApiData,
+        },
+          {
+          path: "/explore/:id",
+          element: <CardDetails/>,
+          loader: GetMovieDetails,
+          
+          
+          
         },
         {
           path: "/trending",
@@ -34,6 +43,11 @@ const App = () => {
         {
           path: "/toprated",
           element: <TopRated />,
+        },
+        {
+          path: "/CardDetails/:id",
+          element: <CardDetails />,
+          loader: GetMovieDetails,  
         },
       ],
     },
