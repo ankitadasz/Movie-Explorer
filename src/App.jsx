@@ -5,10 +5,12 @@ import { Home } from "./Pages/Home";
 import { TopRated } from "./Pages/TopRated";
 import { Trending } from "./Pages/Trending";
 import { Explore } from "./Pages/Explore";
-
+import "./App.css";
+import { GetApiData } from "./Api/GetApiData";
 console.log(createBrowserRouter);
 
 const App = () => {
+  console.log("APP RENDERED");
   const router = createBrowserRouter([
     {
       path: "/",
@@ -23,6 +25,7 @@ const App = () => {
         {
           path: "/explore",
           element: <Explore />,
+          loader:GetApiData,
         },
         {
           path: "/trending",

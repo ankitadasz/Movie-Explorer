@@ -1,7 +1,10 @@
-export const Explore = ()=>{
-    return(
-        <h1>
-            Hello bachooo Explore
-        </h1>
-    )
-}
+import { useLoaderData } from "react-router-dom";
+
+export const Explore = () => {
+    const movieData=useLoaderData();
+    console.log(movieData);
+  return(
+    <>
+    </>
+  )
+};

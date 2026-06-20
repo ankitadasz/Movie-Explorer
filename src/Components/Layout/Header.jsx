@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
-
+import { FaSearch } from "react-icons/fa";
 export const Header = () => {
+  const [showSearch, setShowSearch] = useState(false);
   return (
     <header className="navbar-container">
-      <h1 className="logo">🎬 Movie Explorer</h1>
+      <h1 className="logo">🎬Movie Explorer</h1>
       <nav className="right-nav-container">
         <ul className="right-nav-list">
           <li className="navlink">
@@ -20,8 +22,22 @@ export const Header = () => {
           </li>
         </ul>
       </nav>
-      <input type="text" placeholder="SearchMovies..." className="search-input" />
-      <button className="toggle-button">🌙</button>
+      {showSearch && (
+        <input
+          type="text"
+          placeholder="Search movies..."
+          className="search-input"
+        />
+      )}
+
+      <FaSearch
+        className="search-icon"
+        onClick={() => setShowSearch(!showSearch)}
+      />
+      <label className="switch">
+        <input type="checkbox" />
+        <span className="slider"></span>
+      </label>
     </header>
   );
 };
