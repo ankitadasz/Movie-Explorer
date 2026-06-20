@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 
 export const Home = () => {
   return (
@@ -10,9 +11,9 @@ export const Home = () => {
         </p>
 
         <div className="home-buttons">
-          <a href="/explore" className="btn explore">
+          <NavLink to="/explore" className="btn explore">
             Explore Movies
-          </a>
+          </NavLink>
 
           <a href="/trending" className="btn trending">
             Trending
